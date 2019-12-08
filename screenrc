@@ -1,0 +1,6 @@
+vbell on
+startup_message off
+hardstatus alwayslastline
+hardstatus string '%{= kB}%{y}[%{Y}%H%{y}][%= %{= kw}%?%-Lw%?%{m}(%{W}%n*%f%t%?(%u)%?%{m})%{w}%?%+Lw%?%?%= %{y}][%{Y}%d/%m %{Y}%C%A]'
+termcapinfo xterm|xterms|xs|rxvt ti@:te@
+defscrollback 5000
