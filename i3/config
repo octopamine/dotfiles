@@ -13,7 +13,7 @@ set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:consolas 12 
+font pango:"DejaVu Sans" 11
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -154,26 +154,28 @@ bindsym $mod+r mode "resize"
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
-bar {
-  status_command i3status -c ~/.config/i3/status
-  position top
-  colors {
-    background #333333
-    statusline #c0c0c0
-
-    focused_workspace  #cccccc #282527
-    active_workspace   #ffffff #333333
-    inactive_workspace #888888 #222222
-    urgent_workspace   #ffffff #900000
-  }
-}
+#bar {
+#  status_command i3status -c ~/.config/i3/status
+#  position top
+#  colors {
+#    background #30343f
+#    statusline #c0c0c0
+#
+#    focused_workspace  #cccccc #282527
+#    active_workspace   #ffffff #333333
+#    inactive_workspace #888888 #222222
+#    urgent_workspace   #ffffff #900000
+#  }
+#}
 
 # looks
 for_window [class=".*"] border pixel 0
+default_floating_border normal
 gaps outer 0
 gaps inner 20
-client.focused          #666666 #444444 #ffffff #2e2e24   #282527
-client.focused_inactive #333333 #5f676a #ffffff #484e50   #5f676a
+# class                 border  backgr. text    indicator child_border
+client.focused          #202020 #30343f #d0d0d0 #ff00ff   #202020
+client.focused_inactive #505050 #2f343a #a0a0a0 #00ff00   #505050
 client.unfocused        #333333 #222222 #888888 #292d2e   #222222
 client.urgent           #2f343a #900000 #ffffff #900000   #900000
 client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
@@ -183,17 +185,21 @@ bindsym XF86AudioRaiseVolume exec amixer -q -D pulse sset Master 5%+
 bindsym XF86AudioLowerVolume exec amixer -q -D pulse sset Master 5%-
 bindsym XF86AudioMute exec amixer -q -D pulse sset Master toggle
 
-# remap keys
+# remap caps-lock
 exec --no-startup-id setxkbmap -option caps:Mod4,caps:hyper,caps:Super_L
 
-# gnome settings
-exec --no-startup-id /usr/lib/gnome-settings-daemon/gsd-xsettings
-exec --no-startup-id /usr/lib/gnome-settings-daemon/gsd-keyboard
-exec --no-startup-id /usr/lib/gnome-settings-daemon/gsd-mouse
-exec --no-startup-id /usr/lib/gnome-settings-daemon/gsd-media-keys
-exec --no-startup-id /usr/lib/gnome-settings-daemon/gsd-sound
-exec --no-startup-id /usr/lib/gnome-settings-daemon/gsd-backlight-helper
 
 # wallpaper/compositing
 exec --no-startup-id feh --bg-scale ~/Pictures/Wallpapers/Wallpaper.jpg
 exec compton -c -f -o .85 -z -r 10 -l -15
+
+
+
+# app-specific tunings
+#for_window [class="Pcmanfm"] floating disabled
+for_window [title="^VMD"] floating enabled
+for_window [title="Graphical Representations"] floating enabled
+#for_window [class="Pcmanfm" window_type="dialog"] floating enabled
+#for_window [class="pcmanfm-qt" window_type="normal"] floating enabled, border pixel 10
+for_window [class="kronometer"] floating enabled
+for_window [floating] border normal, title_format " <span><b>%title</b>  // (%class, %instance)</span>"
