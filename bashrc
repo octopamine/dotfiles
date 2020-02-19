@@ -47,6 +47,7 @@ export PS1="[ \[${txtblu}\]\u\[${bldblu}\]@\[${txtblu}\]\h \[${bldblu}\]\w\[${tx
 alias ll='ls -alFh'
 alias la='ls -Ah'
 alias l='ls -lFh'
+alias c='clear'
 
 # convenience aliases
 alias vimball="vim -c 'so %' -c 'q'"
