@@ -181,9 +181,9 @@ client.urgent           #2f343a #900000 #ffffff #900000   #900000
 client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
 
 # sound
-bindsym XF86AudioRaiseVolume exec amixer -q -D pulse sset Master 5%+
-bindsym XF86AudioLowerVolume exec amixer -q -D pulse sset Master 5%-
-bindsym XF86AudioMute exec amixer -q -D pulse sset Master toggle
+bindsym XF86AudioRaiseVolume exec amixer -q sset Master 5%+
+bindsym XF86AudioLowerVolume exec amixer -q sset Master 5%-
+bindsym XF86AudioMute exec amixer -q sset Master toggle
 
 # remap caps-lock
 exec --no-startup-id setxkbmap -option caps:Mod4,caps:hyper,caps:Super_L
@@ -197,6 +197,7 @@ exec compton -c -f -o .85 -z -r 10 -l -15
 
 # app-specific tunings
 #for_window [class="Pcmanfm"] floating disabled
+for_window [class="nobleNote"] floating enabled
 for_window [title="^VMD"] floating enabled
 for_window [title="Graphical Representations"] floating enabled
 #for_window [class="Pcmanfm" window_type="dialog"] floating enabled
