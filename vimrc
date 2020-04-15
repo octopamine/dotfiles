@@ -1,3 +1,7 @@
+" security - disable modelines (exploit in vim <8.1.1365)
+set modelines=0
+set nomodeline
+
 " i always want syntax highlighting
 syntax enable
 
@@ -31,19 +35,6 @@ highlight ExtraWhitespace ctermbg=red guibg=red
 " 80 line highlight (yellow bg, black fg)
 highlight ColorColumn ctermbg=yellow ctermfg=black
 call matchadd('ColorColumn', '\%81v', 100)
-
-" remap control-k to the digraph HUD plugin
-inoremap <expr>  <C-K>   HUDG_GetDigraph()
-
-" remaps for visual block drag plugin
-runtime plugin/dragvisuals.vim
-vmap  <expr>  <S-LEFT>   DVB_Drag('left')
-vmap  <expr>  <S-RIGHT>  DVB_Drag('right')
-vmap  <expr>  <S-DOWN>   DVB_Drag('down')
-vmap  <expr>  <S-UP>     DVB_Drag('up')
-
-" remaps find next with HLNext plugin
-nmap <silent> <BS> :call HLNextOff() <BAR> :nohlsearch<CR>
 
 " status line customization
 hi StatColor guibg=#95e454 guifg=black ctermbg=lightblue ctermfg=black
@@ -92,6 +83,6 @@ set number
 hi LineNr       cterm=NONE ctermfg=DarkGrey guifg=DarkGrey ctermbg=NONE gui=NONE guibg=NONE
 hi CursorLineNr cterm=NONE ctermfg=red      guifg=red ctermbg=NONE gui=NONE guibg=NONE
 
-" security - disable modelines (exploit in vim <8.1.1365)
-set modelines=0
-set nomodeline
+" tabs
+nnoremap <C-l> :tabnext<CR>
+nnoremap <C-h> :tabprevious<CR>
