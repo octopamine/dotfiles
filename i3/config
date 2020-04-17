@@ -152,47 +152,40 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
+
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
-bar {
-  status_command i3status -c ~/.config/i3/status
-  position bottom
-  colors {
-    background #30343f
-    statusline #c0c0c0
+set $bgcolor     #353535
+set $fgcolor     #d0d0d0
 
-    focused_workspace  #cccccc #282527
-    active_workspace   #ffffff #333333
-    inactive_workspace #888888 #222222
-    urgent_workspace   #ffffff #900000
+bar {
+  status_command i3blocks #i3status -c ~/.config/i3/status
+  font pango:DejaVu Sans 11
+  workspace_min_width 24
+  position top
+  colors {
+    background $bgcolor
+    statusline $fgcolor
+
+    focused_workspace  #f0c674 #444444 $fgcolor
+    active_workspace   #f0c674 #444444 $fgcolor
+    inactive_workspace #252525 $bgcolor $fgcolor
+    urgent_workspace   #252525 #903535 $fgcolor
   }
 }
+
 
 # looks
 for_window [class=".*"] border pixel 0
 default_floating_border normal
 gaps outer 0
-gaps inner 20
+gaps inner 15
 # class                 border  backgr. text    indicator child_border
-client.focused          #202020 #30343f #d0d0d0 #ff00ff   #202020
-client.focused_inactive #505050 #2f343a #a0a0a0 #00ff00   #505050
-client.unfocused        #333333 #222222 #888888 #292d2e   #222222
-client.urgent           #2f343a #900000 #ffffff #900000   #900000
-client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
-
-# sound
-bindsym XF86AudioRaiseVolume exec amixer -q sset Master 5%+
-bindsym XF86AudioLowerVolume exec amixer -q sset Master 5%-
-bindsym XF86AudioMute exec amixer -q sset Master toggle
-
-# remap caps-lock
-exec --no-startup-id setxkbmap -option caps:Mod4,caps:hyper,caps:Super_L
-
-
-# wallpaper/compositing
-exec --no-startup-id feh --bg-scale ~/Pictures/Wallpapers/Wallpaper.jpg
-exec compton -c -f -o .85 -z -r 10 -l -15
-
+client.focused          $bgcolor $bgcolor $fgcolor $bgcolor   $bgcolor
+client.focused_inactive $bgcolor $bgcolor $fgcolor $bgcolor   $bgcolor
+client.unfocused        $bgcolor $bgcolor $fgcolor $bgcolor   $bgcolor
+client.urgent           $bgcolor $bgcolor $fgcolor $bgcolor   $bgcolor
+client.placeholder      $bgcolor $bgcolor $fgcolor $bgcolor   $bgcolor
 
 
 # app-specific tunings
@@ -203,4 +196,17 @@ for_window [title="Graphical Representations"] floating enabled
 #for_window [class="Pcmanfm" window_type="dialog"] floating enabled
 #for_window [class="pcmanfm-qt" window_type="normal"] floating enabled, border pixel 10
 for_window [class="kronometer"] floating enabled
-for_window [floating] border normal, title_format " <span><b>%title</b>  // (%class, %instance)</span>"
+for_window [floating] border normal, title_format " %title "
+
+
+# sound
+bindsym XF86AudioRaiseVolume exec amixer -q sset Master 5%+ && pkill -RTMIN+1 i3blocks
+bindsym XF86AudioLowerVolume exec amixer -q sset Master 5%- && pkill -RTMIN+1 i3blocks
+bindsym XF86AudioMute exec amixer -q sset Master toggle && pkill -RTMIN+1 i3blocks
+
+# remap caps-lock
+exec --no-startup-id setxkbmap -option caps:Mod4,caps:hyper,caps:Super_L
+
+# wallpaper/compositing
+exec --no-startup-id feh --bg-scale ~/Pictures/Wallpapers/Wallpaper.jpg
+exec compton -c -f -o .85 -z -r 10 -l -15

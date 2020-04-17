@@ -1,0 +1,28 @@
+# Global properties
+separator=true
+separator_block_width=15
+SCRIPT_DIR=/home/ccr/.local/libexec/i3blocks
+
+[pavu]
+color=#f5af19
+full_text=♪
+command=pavucontrol-qt
+
+[volume-pulseaudio]
+command=$SCRIPT_DIR/volume-pulseaudio
+LONG_FORMAT="${VOL}% [${INDEX}:${NAME}]"
+USE_ALSA_NAME=1
+USE_DESCRIPTION=0
+interval=once
+signal=1
+
+[dunst]
+command=$SCRIPT_DIR/dunst
+interval=once
+format=json
+markup=pango
+
+[time]
+command=date '+%a %B %-d 🕑 %H:%M:%S  '
+interval=1
+
