@@ -160,8 +160,9 @@ set $fgcolor     #d0d0d0
 
 bar {
   status_command i3blocks #i3status -c ~/.config/i3/status
-  font pango:DejaVu Sans 11
   workspace_min_width 24
+  height 28
+  font pango:DejaVu Sans 11
   position top
   colors {
     background $bgcolor
@@ -197,6 +198,7 @@ for_window [title="Graphical Representations"] floating enabled
 #for_window [class="pcmanfm-qt" window_type="normal"] floating enabled, border pixel 10
 for_window [class="kronometer"] floating enabled
 for_window [floating] border normal, title_format " %title "
+for_window [class="Yad"] floating enable
 
 
 # sound
@@ -210,3 +212,6 @@ exec --no-startup-id setxkbmap -option caps:Mod4,caps:hyper,caps:Super_L
 # wallpaper/compositing
 exec --no-startup-id feh --bg-scale ~/Pictures/Wallpapers/Wallpaper.jpg
 exec compton -c -f -o .85 -z -r 10 -l -15
+
+# systray
+exec --no-startup-id nm-applet
