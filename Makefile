@@ -20,8 +20,8 @@ diff:
 	diff ~/.screenrc screenrc
 	diff ~/.bashrc bashrc
 	diff ~/.profile profile
-	diff ~/.config/i3/ ./i3/
-	diff ~/.config/qt5ct/ ./qt5ct/
-	diff ~/.config/gtk-3.0/ ./gtk-3.0/
-	diff ~/.config/i3blocks/ ./i3blocks/
-	diff ~/.config/dunst/ ./dunst/
+	diff -r ~/.config/i3/ ./i3/
+	diff -r ~/.config/qt5ct/ ./qt5ct/
+	diff -r ~/.config/gtk-3.0/ ./gtk-3.0/
+	diff -r ~/.config/i3blocks/ ./i3blocks/
+	diff -r ~/.config/dunst/ ./dunst/
