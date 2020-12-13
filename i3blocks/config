@@ -1,0 +1,55 @@
+# Global properties
+separator=true
+separator_block_width=15
+SCRIPT_DIR=/home/ccr/.local/libexec/i3blocks
+
+
+[vlc-prev]
+color=#8abeb7
+full_text=<span size="x-large">⏮</span>
+command=dbus-send --type=method_call --dest=org.mpris.MediaPlayer2.vlc /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous
+markup=pango
+
+[vlc-playpause]
+color=#8abeb7
+full_text=<span size="x-large">⏯</span>
+command=dbus-send --type=method_call --dest=org.mpris.MediaPlayer2.vlc /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause
+markup=pango
+
+[vlc-next]
+color=#8abeb7
+full_text=<span size="x-large">⏭</span>
+command=dbus-send --type=method_call --dest=org.mpris.MediaPlayer2.vlc /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next
+markup=pango
+
+[pavu]
+color=#f5af19
+full_text=♪
+command=pavucontrol-qt
+markup=pango
+
+[volume-pulseaudio]
+command=$SCRIPT_DIR/volume-pulseaudio
+LONG_FORMAT=<b>${VOL}%</b> <span size="x-small">[${NAME}]</span>
+USE_ALSA_NAME=0
+USE_DESCRIPTION=1
+AUDIO_DELTA=2
+interval=once
+signal=1
+markup=pango
+
+[calendar]
+command=$SCRIPT_DIR/calendar
+interval=1
+LABEL=  
+DATEFMT=+%a %B %-d @ <b>%H:%M:%S</b>
+# SHORTFMT=+%H:%M:%S
+HEIGHT=180
+WIDTH=220
+markup=pango
+
+[dunst]
+command=$SCRIPT_DIR/dunst
+interval=once
+format=json
+markup=pango

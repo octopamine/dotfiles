@@ -4,6 +4,8 @@ case $- in
       *) return;;
 esac
 
+## DEFAULTS
+export EDITOR=vim
 
 ## HISTORY
 # don't put duplicate lines
@@ -51,10 +53,16 @@ export PS1="[ \[${txtblu}\]\u\[${bldblu}\]@\[${txtblu}\]\h \[${bldblu}\]\w\[${tx
 alias ll='ls -alFh'
 alias la='ls -Ah'
 alias l='ls -lFh'
+alias c='clear'
 
 # convenience aliases
 alias vimball="vim -c 'so %' -c 'q'"
 alias icanhazip="wget -q -O /tmp/hazip icanhazip.com && cat /tmp/hazip"
 alias pycmake="./setup.py build; sudo ./setup.py install"
-#alias sizeover="find . -size +10k -exec ls -lh {} \+"
 
+## command 'aliases'
+# create directory tree and cd into it
+cdp () {
+  mkdir -p -- "$1" &&
+  cd -P -- "$1"
+}
