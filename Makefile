@@ -14,10 +14,10 @@ install:
 	rsync -a ./dunst/ ~/.config/dunst/
 	rsync -a ./nvim_config/ ~/.config/nvim/
 	rsync -a ./nvim_local/ ~/.config/nvim/
+	mkdir -p ~/.vim/autoload
 	rsync -a ./vim/autoload/plug.vim ~/.vim/autoload/plug.vim
-
-#	rsync -a ./nvim_local/shada/main.shada
-#	rsync -a ./nvim_local/site/autoload/plug.vim
+	rsync -a ./nvim_local/shada/main.shada
+	rsync -a ./nvim_local/site/autoload/plug.vim
 
 
 diff:
